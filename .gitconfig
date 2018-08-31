@@ -1,0 +1,15 @@
+[user]
+	name = JinwookMBP
+	email = vustthat@gmail.com
+[core]
+	excludesfile = /Users/vustthat/.gitignore_global
+  editor = nvim
+	autocrlf = input
+[commit]
+	template = /Users/vustthat/.stCommitMsg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

@@ -1,8 +1,8 @@
 ## dotfiles 가져오기!
 ```bash
 echo ".dotfiles.git" >> .gitignore
-git clone --bare <git-repo-url> $HOME/.dotfiles.git
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'`
+git clone --bare git@github.com:theGivingTree/dotfiles.git $HOME/.dotfiles.git
+alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```

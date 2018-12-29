@@ -9,12 +9,16 @@
 # for ssh logins, install and configure the libpam-umask package.
 # umask 022
 
-#   Set Paths
-#   ------------------------------------------------------------
-    if [ -d "$HOME/.bin" ] ; then
-	    # set PATH so it includes user's private bin if it exists
-        export PATH="$HOME/.bin:$PATH"
-    fi
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.bin" ] ; then
+  PATH="$HOME/.bin:$PATH"
+fi
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
+fi
+if [ -d "$HOME/.local/bin" ] ; then
+  PATH="$HOME/.local/bin:$PATH"
+fi
 
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)

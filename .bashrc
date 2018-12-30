@@ -74,6 +74,8 @@ export EDITOR="neovim"
 #   ------------------------------------------------------------
 export BLOCKSIZE=1k
 
+complete -d cd
+
 # Command tab-completion
 if command -v brew &>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
@@ -124,3 +126,4 @@ export NVM_DIR="$HOME/.nvm"
 command -v rbenv &> /dev/null && eval "$(rbenv init -)"
 
 alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+__git_complete dotfiles __git_main

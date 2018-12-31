@@ -2,6 +2,10 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 
+if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
+  echo "you are running bash <4"
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

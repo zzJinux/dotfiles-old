@@ -120,7 +120,7 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 # export PS1="\u@\h \W \$(__git_ps1 \"(%s) \")\$ "
-PROMPT_COMMAND='__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "'
+PROMPT_COMMAND="${PROMPT_COMMAND};"'__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "'
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
 
 export NVM_DIR="$HOME/.nvm"

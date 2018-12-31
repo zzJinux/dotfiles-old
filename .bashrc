@@ -81,8 +81,8 @@ export BLOCKSIZE=1k
 complete -d cd
 
 # Command tab-completion
-if command -v brew &>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  source $(brew --prefix)/etc/bash_completion
+if command -v brew &>/dev/null && [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  source $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
 if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then

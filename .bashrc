@@ -132,5 +132,8 @@ export NVM_DIR="$HOME/.nvm"
 
 command -v rbenv &> /dev/null && eval "$(rbenv init -)"
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+export _JAVA_OPTIONS="-Dfiles.encoding=UTF-8"
+
 alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 __git_complete dotfiles __git_main

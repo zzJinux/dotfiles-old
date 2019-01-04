@@ -71,7 +71,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
-export EDITOR="neovim"
+export EDITOR="nvim"
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -120,6 +120,9 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 # export PS1="\u@\h \W \$(__git_ps1 \"(%s) \")\$ "
+if [ -z "$PROMPT_COMMAND" ]; then
+  PROMPT_COMMAND=":"
+fi
 PROMPT_COMMAND="${PROMPT_COMMAND};"'__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "'
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
 

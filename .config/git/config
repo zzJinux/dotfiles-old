@@ -1,6 +1,6 @@
 [user]
-	name = JinwookMBP
-	email = vustthat@gmail.com
+  name = JinwookMBP
+  email = vustthat@gmail.com
 [core]
   excludesfile = /Users/lineplus/.gitignore_global
   editor = nvim

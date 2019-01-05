@@ -32,7 +32,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat'
 
 " utils
@@ -246,23 +245,6 @@ hi link EasyMotionShade Comment
 " EasyAlign
 xmap ga <Plug>(LiveEasyAlign)
 nmap ga <Plug>(LiveEasyAlign)
-
-
-
-
-" MultipleCursors
-" zm => multipleCursor by regular expression
-nnoremap zm :MultipleCursorsFind<space>
-xnoremap zm :MultipleCursorsFind<space>
-xmap zI zm^<cr>I
-
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_start_key='<c-n>'
-let g:multi_cursor_next_key='<tab>'
-let g:multi_cursor_prev_key='b'
-let g:multi_cursor_skip_key='x'
-let g:multi_cursor_quit_key='q'
-
 
 
 

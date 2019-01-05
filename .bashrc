@@ -95,15 +95,6 @@ if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
     if [ -f aliases ]; then
       . aliases
     fi
-
-    local _url='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash'
-    [ -f git-completion.bash ] || curl $_url -o git-completion.bash
-    . git-completion.bash
-
-    local _url='https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh'
-    [ -f git-prompt.sh ] || curl $_url -o git-prompt.sh
-    . git-prompt.sh
-
   }
 
   source_aliases

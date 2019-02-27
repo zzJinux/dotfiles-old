@@ -78,6 +78,24 @@ export EDITOR="nvim"
 #   ------------------------------------------------------------
 export BLOCKSIZE=1k
 
+_1() {
+  uname=$(uname -a | tr '[:upper:]' '[:lower:]')
+  if [[ "$uname" =~ "darwin" || "$uname" =~ "bsd" ]]; then
+    family="bsd"
+  elif [[ "$uname" =~ "linux" ]]; then
+    family="gnu"
+  else
+    echo "UNKNOWN command-dialect"
+    return
+  fi
+}
+_1_() {
+  unset -v uname
+  unset -v family
+}
+_1
+unset -f _1
+
 complete -d cd
 
 # Command tab-completion
@@ -128,3 +146,5 @@ export _JAVA_OPTIONS="-Dfiles.encoding=UTF-8"
 
 alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 __git_complete dotfiles __git_main
+
+_1_

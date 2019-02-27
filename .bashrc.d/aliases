@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 # reference: http://natelandau.com/my-mac-osx-bash_profile/
 
-uname=$(uname -a | tr '[:upper:]' '[:lower:]')
-if [[ "$uname" =~ "darwin" || "$uname" =~ "bsd" ]]; then
-  family="bsd"
-elif [[ "$uname" =~ "linux" ]]; then
-  family="gnu"
-else
-  echo "WHO ARE YOU? no aliases"
-  return
-fi
-
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
@@ -186,5 +176,3 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 if [[ "$uname" =~ "darwin" ]]; then
   . aliases_mac
 fi
-
-unset uname family

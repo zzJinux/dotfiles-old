@@ -137,7 +137,7 @@ nmap twl :vertical resize +5<cr>
 
 
 " Startify
-command! -nargs=1 CD cd <args> | Startify
+command! -nargs=1 -complete=file CD cd <args> | Startify
 autocmd User Startified setlocal cursorline
 let g:startify_enable_special         = 0
 let g:startify_files_number           = 8
@@ -147,15 +147,11 @@ let g:startify_update_oldfiles        = 1
 let g:startify_session_autoload       = 1
 let g:startify_session_persistence    = 1
 let g:startify_session_delete_buffers = 1
-let g:startify_list_order = [
-      \ ['   MRU within this dir:'],
-      \ 'dir',
-      \ ['   MRU:'],
-      \ 'files',
-      \ ['   Sessions:'],
-      \ 'sessions',
-      \ ['   Bookmarks:'],
-      \ 'bookmarks',
+let g:startify_lists = [
+      \ { 'type': 'dir', 'header': ['   MRU within this dir:'] },
+      \ { 'type': 'files', 'header': ['   MRU:'] },
+      \ { 'type': 'sessions', 'header': ['   Sessions:'] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks:'] },
       \ ]
 let g:startify_skiplist = [
       \ 'COMMIT_EDITMSG',

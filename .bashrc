@@ -99,9 +99,8 @@ unset -f _1
 complete -d cd
 
 # Command tab-completion
-if command -v brew &>/dev/null && [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  source $(brew --prefix)/share/bash-completion/bash_completion
-fi
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
   pushd ~/.bashrc.d &> /dev/null

@@ -121,7 +121,7 @@ imap ,, <Esc>
 tmap ,, <Esc>
 
 " <esc> => go back to normal mode (in terminal mode)
-tnoremap <Esc> <C-\><C-n> 
+tnoremap <Esc> <C-\><C-n>
 
 " use t{h,j,k,l} to switch between different windows
 noremap tk <c-w>k
@@ -263,7 +263,7 @@ let g:neomake_scala_scalac_args = ['-Ystop-after:parser', '-Xexperimental']
 if exists('nyaovim_version')
   nnoremap <silent> <s-cr> :Ttoggle<cr>
 else " in terminal use t<enter>
-  nmap t<CR> :Ttoggle<CR> 
+  nmap t<CR> :Ttoggle<CR>
 endif
 " tt => type the command for the terminal
 nnoremap tt :T<space>

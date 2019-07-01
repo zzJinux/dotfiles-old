@@ -4,6 +4,6 @@ nnoremap <Bslash><C-d> :action Debug<CR>
 nnoremap <C-g> :action SelectNextOccurrence<CR>
 nnoremap <Bslash><C-h> :action TypeHierarchy<CR>
 nnoremap <Bslash><C-i> :action ImplementMethods<CR>
-nnoremap <Bslash><C-o> :action GuiDesigner.CreateListener<CR>
+nnoremap <Bslash><C-o> :action OverrideMethods<CR>
 nnoremap <Bslash><C-r> :action Run<CR>
 nnoremap <Bslash><C-t> :action Refactorings.QuickListPopupAction<CR>

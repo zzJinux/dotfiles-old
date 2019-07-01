@@ -57,6 +57,8 @@ Plug 'eugen0329/vim-esearch'
 " html/css/javascript
 Plug 'mattn/emmet-vim'
 Plug 'leafgarland/typescript-vim'
+
+Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 
 " Fundamental settings
@@ -72,7 +74,7 @@ syntax on
 " Some useful settings
 "  set smartindent
 set expandtab         "tab to spaces
-set tabstop=2         "the width of a tab
+set softtabstop=2
 set shiftwidth=2      "the width for indent
 set foldenable
 set foldmethod=indent "folding by indent

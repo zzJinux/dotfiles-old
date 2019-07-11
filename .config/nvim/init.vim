@@ -99,8 +99,6 @@ set background=dark "use the light version of gruvbox
 "
 " \\ => go to command mode
 imap <leader><leader> <esc>:
-" <c-v> => for pasting
-imap <c-v> <esc>"+pa
 " <c-h/j/k/l> => hjkl in normal mode (but there is a bug mapping <c-h>)
 imap <c-h> <left>
 imap <c-j> <down>

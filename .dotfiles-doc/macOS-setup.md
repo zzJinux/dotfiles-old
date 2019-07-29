@@ -1,10 +1,10 @@
 # Manual Setup
-## pre-setup
+## macOS CLI tools
 ```sh
 xcode-select --install
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-## main
+
+## clone
 ```sh
 # Prepare the ssh credential under '~/.ssh'
 cd
@@ -15,12 +15,21 @@ dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
-## post-setup
+## Homebrew
 ```sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew bundle
+```
+
+## terminal.app
+```
+# change default shell
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 chsh -s /usr/local/bin/bash
 ```
+
+- https://github.com/lysyi3m/macos-terminal-themes
+- 3024 Night
 
 ## Bash Completion (macOS)
 `cd /usr/local/share/bash-completion/completions`

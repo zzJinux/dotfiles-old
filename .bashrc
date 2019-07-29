@@ -104,19 +104,8 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
   pushd ~/.bashrc.d &> /dev/null
-
-  source_aliases() {
-    if [ -f colors ]; then
-      . colors
-    fi
-    if [ -f aliases ]; then
-      . aliases
-    fi
-  }
-
-  source_aliases
-  unset -f source_aliases
-
+  . colors
+  . aliases
   popd &> /dev/null
 
 fi
@@ -134,11 +123,22 @@ fi
 PROMPT_COMMAND="${PROMPT_COMMAND};"'__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "'
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+# https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
 
-command -v rbenv &> /dev/null && eval "$(rbenv init -)"
+# you have to run `rbenv rehash` manually any time you intsall a new Ruby or a gem
+command -v rbenv &> /dev/null && eval "$(rbenv init - --no-rehash)"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 export _JAVA_OPTIONS="-Dfiles.encoding=UTF-8"

@@ -21,6 +21,9 @@ dotfiles config --local status.showUntrackedFiles no
 brew bundle
 ```
 
+# nvm
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash`
+
 ## terminal.app
 ```
 # change default shell

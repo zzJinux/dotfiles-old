@@ -116,11 +116,11 @@ GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
-# export PS1="\u@\h \W \$(__git_ps1 \"(%s) \")\$ "
 if [ -z "$PROMPT_COMMAND" ]; then
   PROMPT_COMMAND=":"
 fi
-PROMPT_COMMAND="${PROMPT_COMMAND};"'__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "'
+PROMPT_COMMAND="${PROMPT_COMMAND};"
+__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
 
 # https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html

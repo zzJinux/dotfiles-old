@@ -120,7 +120,8 @@ if [ -z "$PROMPT_COMMAND" ]; then
   PROMPT_COMMAND=":"
 fi
 PROMPT_COMMAND="${PROMPT_COMMAND};"
-__git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "
+PS1="\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]\[$BGreen\]"'$(__git_ps1 " (%s)")'"\[$Color_Off\]\$ "
+# __git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
 
 # https://www.growingwiththeweb.com/2018/01/slow-nvm-init.html

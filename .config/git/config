@@ -5,7 +5,6 @@
   excludesfile = ~/.gitignore_global
   editor = nvim
   autocrlf = input
-  symlinks = false
 [commit]
   template = ~/.stCommitMsg
 [alias]

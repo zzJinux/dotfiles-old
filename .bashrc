@@ -110,6 +110,9 @@ if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
 
 fi
 
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/zzjinux/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
 #   Change Prompt
 #   ------------------------------------------------------------
 GIT_PS1_SHOWDIRTYSTATE=1

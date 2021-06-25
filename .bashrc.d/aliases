@@ -5,7 +5,7 @@
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
 alias sudo='sudo ' # fix sudo <alias> issue
-fg() { builtin fg "$@"; echo -e "\e]0;\a"; }
+# fg() { builtin fg "$@"; echo -e "\e]0;\a"; }
 alias rm="echo Use 'del', or the full path i.e. '/bin/rm'"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -13,7 +13,7 @@ alias egrep='egrep --color=auto'
 
 if command -v nvim &> /dev/null; then
   alias vi='nvim'
-  alias vimdiff='nvim -d'
+  alias nvimdiff='nvim -d'
 fi
 
 alias py=python3

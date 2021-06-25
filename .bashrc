@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 
@@ -7,11 +7,6 @@ if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
 fi
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -41,7 +36,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|nsterm*) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -99,8 +94,18 @@ unset -f _1
 complete -d cd
 
 # Command tab-completion
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "$COMPLETION" ]] && source "$COMPLETION"
+    done
+  fi
+fi
 
 if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
   pushd ~/.bashrc.d &> /dev/null
@@ -110,19 +115,16 @@ if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
 
 fi
 
-# heroku autocomplete setup
-HEROKU_AC_BASH_SETUP_PATH=/Users/zzjinux/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
-
 #   Change Prompt
 #   ------------------------------------------------------------
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
-if [ -z "$PROMPT_COMMAND" ]; then
-  PROMPT_COMMAND=":"
-fi
-PROMPT_COMMAND="${PROMPT_COMMAND};"
+
+# Set cursor style
+PROMPT_COMMAND="printf '\033[5 q'; ${PROMPT_COMMAND}"
+
 PS1="\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]\[$BGreen\]"'$(__git_ps1 " (%s)")'"\[$Color_Off\]\$ "
 # __git_ps1 "\[$BGreen\]\u@\h\[$Color_Off\]: \[$BBlue\]\W\[$Color_Off\]" "\$ "
 SUDO_PS1="\[$On_Red\]\u@\h\[$Color_Off\] \W\$ "
@@ -141,11 +143,7 @@ if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
   for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
 fi
 
-# you have to run `rbenv rehash` manually any time you intsall a new Ruby or a gem
-command -v rbenv &> /dev/null && eval "$(rbenv init - --no-rehash)"
-
 export JAVA_HOME=$(/usr/libexec/java_home)
-export _JAVA_OPTIONS="-Dfiles.encoding=UTF-8"
 
 alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 __git_complete dotfiles __git_main

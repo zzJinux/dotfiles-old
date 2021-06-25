@@ -5,6 +5,8 @@
   excludesfile = ~/.gitignore_global
   editor = nvim
   autocrlf = input
+[init]
+  defaultBranch = master
 [commit]
   template = ~/.stCommitMsg
 [alias]
@@ -15,7 +17,7 @@
   # https://dev.to/committedsw/useful-git-alias-47in
   cm = "!cm() { git commit -m \"$1\"; }; cm"
   ca = commit --amend --no-edit
-
+  root = rev-parse --show-toplevel
 [color]
   ui = auto
   diff = auto

@@ -1,0 +1,32 @@
+{
+    "title": "Languages",
+    "rules": [
+        {
+            "description": "F16 to option + space",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
+                        "modifiers": {
+                            "optional": [
+                                "caps_lock"
+
+                            ]
+                        }
+
+
+                    },
+                    "to": [
+                        {
+                            "key_code": "spacebar",
+                            "modifiers": [
+                                "left_alt"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

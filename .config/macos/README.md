@@ -7,17 +7,21 @@ xcode-select --install
 2. Clone the repo
 ```
 cd
-echo ".dotfiles.git" >> .gitignore
-git clone --bare git@github.com:zzJinux/dotfiles.git $HOME/.dotfiles.git
-alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+BARE_GIT=
+: ${BARE_GIT:=dotfiles.git}
+echo "$BARE_GIT" >> .gitignore
+git clone --bare https://github.com/zzJinux/dotfiles.git "$HOME/$BARE_GIT"
+alias dotfiles='/usr/bin/env git --git-dir="$HOME/$BARE_GIT/" --work-tree=$HOME'
 dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
 3. Bootstrap
 ```
-./dotfiles-setup/macos-bootstrap.sh
-./dotfiles-setup/macos-defaults.sh
+cd
+cd .config/macos
+./bootstrap.sh
+./defaults.sh
 ```
 
 # More...

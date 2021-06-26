@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+cd
+: ${BARE_GIT:=.dotfiles.git}
+: ${CMD_NAME:=dotfiles}
+echo "$BARE_GIT" >> .gitignore
+git clone --bare https://github.com/zzJinux/dotfiles.git "$HOME/$BARE_GIT"
+
+dotfiles() { /usr/bin/env git --git-dir="$HOME/$BARE_GIT" --work-tree="$HOME" "$@"; }
+dotfiles checkout
+dotfiles config --local status.showUntrackedFiles no
+
+dotfiles_rc="$HOME/.bashrc.d/dotfiles_rc"
+echo "alias $CMD_NAME='/usr/bin/env git --git-dir=\"\$HOME/$BARE_GIT\" --work-tree=\"\$HOME\"'" > "$dotfiles_rc"
+echo "__git_complete $CMD_NAME __git_main" >> "$dotfiles_rc"
+
+
 # Ask for privilege
 sudo -v
 

@@ -4,27 +4,17 @@
 xcode-select --install
 ```
 
-2. Clone the repo
+2. Run the setup script
 ```sh
-cd
-BARE_GIT=
-: ${BARE_GIT:=dotfiles.git}
-echo "$BARE_GIT" >> .gitignore
-git clone --bare https://github.com/zzJinux/dotfiles.git "$HOME/$BARE_GIT"
-alias dotfiles='/usr/bin/env git --git-dir="$HOME/$BARE_GIT/" --work-tree=$HOME'
-dotfiles checkout
-dotfiles config --local status.showUntrackedFiles no
-```
-
-3. Bootstrap
-```sh
-cd && cd .config/macos
-./bootstrap.sh
-./defaults.sh
+curl -o- https://raw.githubusercontent.com/zzJinux/dotfiles/master/.config/macos/setup.sh | bash
 ```
 
 # More...
-**Add ssh credentials**
+- Add ssh credentials
+- Set additional configurations
+  ```sh
+  cd && .config/macos/defaults.sh
+  ```
 
 ## Bash Completions
 [**docker, -compose, -machine**](https://gist.github.com/rkuzsma/4f8c1354a9ea67fb3ca915b50e131d1c)
@@ -35,12 +25,13 @@ ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-comple
 ```
 
 ## Apps
-**Terminal.app**
+### Terminal
+
 My default theme: `3024 Night.terminal`
 
 More themes at https://github.com/lysyi3m/macos-terminal-themes
 
-**MacVim**
+### MacVim
 ```sh
 cd && cd .config/macos
 ./macvim_post.sh

@@ -111,6 +111,9 @@ if [ -d ~/.bashrc.d ] && mkdir -p ~/.bashrc.d; then
   pushd ~/.bashrc.d &> /dev/null
   . colors
   . aliases
+  for i in *_rc; do
+    [[ -r "$i" ]] && . "$i"
+  done
   popd &> /dev/null
 
 fi
@@ -144,8 +147,5 @@ if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
 fi
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-
-alias dotfiles='/usr/bin/env git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-__git_complete dotfiles __git_main
 
 _1_

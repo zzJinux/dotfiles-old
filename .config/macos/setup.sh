@@ -21,11 +21,11 @@ echo "__git_complete $CMD_NAME __git_main" >> "$dotfiles_rc"
 sudo -v
 
 # Homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
-  && brew bundle
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+  && brew bundle -v
 
 # Change the default shell
-bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
+sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
  && chsh -s /usr/local/bin/bash
 
 # NVM

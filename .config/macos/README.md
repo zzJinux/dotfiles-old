@@ -5,7 +5,7 @@ xcode-select --install
 ```
 
 2. Clone the repo
-```
+```sh
 cd
 BARE_GIT=
 : ${BARE_GIT:=dotfiles.git}
@@ -17,9 +17,8 @@ dotfiles config --local status.showUntrackedFiles no
 ```
 
 3. Bootstrap
-```
-cd
-cd .config/macos
+```sh
+cd && cd .config/macos
 ./bootstrap.sh
 ./defaults.sh
 ```
@@ -43,12 +42,8 @@ More themes at https://github.com/lysyi3m/macos-terminal-themes
 
 **MacVim**
 ```sh
-cd && mkdir -p .local/bin .local/share/man/man1
-cd .local/bin && for item in /Applications/MacVim.app/Contents/bin/*; do
-  ln -s `realpath "$item"` `basename "$item"`
-done
-cd .local/share/man/man1 && \
-  ln -s /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/*.1 ./
+cd && cd .config/macos
+./macvim_post.sh
 ```
 
 # References

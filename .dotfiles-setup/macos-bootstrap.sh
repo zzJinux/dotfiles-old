@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
+# Ask for privilege
+sudo -v
+
 # Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
   && brew bundle
 
 # Change the default shell
-sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
+bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
  && chsh -s /usr/local/bin/bash
 
 # NVM

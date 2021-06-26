@@ -17,6 +17,7 @@ dotfiles config --local status.showUntrackedFiles no
 3. Bootstrap
 ```
 ./dotfiles-setup/macos-bootstrap.sh
+./dotfiles-setup/macos-defaults.sh
 ```
 
 # More...

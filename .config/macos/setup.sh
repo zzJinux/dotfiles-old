@@ -10,6 +10,7 @@ dotfiles() { /usr/bin/env git --git-dir="$HOME/$BARE_GIT" --work-tree="$HOME" "$
 dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 
+mkdir -p "$HOME/.bashrc.d"
 dotfiles_rc="$HOME/.bashrc.d/dotfiles_rc"
 echo "alias $CMD_NAME='/usr/bin/env git --git-dir=\"\$HOME/$BARE_GIT\" --work-tree=\"\$HOME\"'" > "$dotfiles_rc"
 echo "__git_complete $CMD_NAME __git_main" >> "$dotfiles_rc"

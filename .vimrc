@@ -13,8 +13,6 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'plasticboy/vim-markdown'
-
 " looking
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
@@ -35,6 +33,7 @@ Plug 'tpope/vim-surround'
 " formatting
 Plug 'junegunn/vim-easy-align'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-sleuth'
 
 call plug#end()
@@ -55,11 +54,11 @@ set smartcase         "if searching text contains uppercase case will not be ign
 " Lookings
 set number           "line number
 set cursorline       "highlight the line of the cursor
-set cursorcolumn     "highlight the column of the cursor
+" This option causes slowness in INSERT mode (reason unknown)
+" set cursorcolumn     "highlight the column of the cursor
 set nowrap           "no line wrapping
 set list
 set listchars=tab:\|\ ,trail:-,nbsp:+
-
 
 set exrc
 
@@ -142,14 +141,14 @@ tmap ,, <Esc>
 tnoremap <Esc> <C-\><C-n>
 
 " use t{h,j,k,l} to switch between different windows
-noremap tk <c-w>k
-noremap tj <c-w>j
-noremap th <c-w>h
-noremap tl <c-w>l
-nmap twj :resize +5<cr>
-nmap twk :resize -5<cr>
-nmap twh :vertical resize -5<cr>
-nmap twl :vertical resize +5<cr>
+" noremap tk <c-w>k
+" noremap tj <c-w>j
+" noremap th <c-w>h
+" noremap tl <c-w>l
+" nmap twj :resize +5<cr>
+" nmap twk :resize -5<cr>
+" nmap twh :vertical resize -5<cr>
+" nmap twl :vertical resize +5<cr>
 
 
 
@@ -243,5 +242,4 @@ let b:sleuth_automatic = 0
 augroup myautocmds
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufRead,BufNewFile,BufEnter \@!(term://)* cd %:p:h
-  au FileType json set nocursorcolumn
 augroup END

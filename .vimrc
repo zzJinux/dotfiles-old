@@ -13,19 +13,15 @@ endfunction
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'plasticboy/vim-markdown'
-
 " looking
 Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
-Plug 'myusuf3/numbers.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 
 " colorschemes
-Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 
@@ -33,32 +29,12 @@ Plug 'rakr/vim-one'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdcommenter'
 
 " formatting
 Plug 'junegunn/vim-easy-align'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-sleuth'
-
-" command extension
-Plug 'wellle/targets.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-repeat'
-
-" utils
-Plug 'kassio/neoterm'
-Plug 'sjl/gundo.vim'
-Plug 'chrisbra/NrrwRgn'
-
-" files navigation
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'eugen0329/vim-esearch'
-
-" language-specifics
-" Plug 'mattn/emmet-vim'
-" Plug 'leafgarland/typescript-vim'
-" Plug 'Vimjas/vim-python-pep8-indent'
 
 call plug#end()
 
@@ -78,11 +54,11 @@ set smartcase         "if searching text contains uppercase case will not be ign
 " Lookings
 set number           "line number
 set cursorline       "highlight the line of the cursor
-set cursorcolumn     "highlight the column of the cursor
+" This option causes slowness in INSERT mode (reason unknown)
+" set cursorcolumn     "highlight the column of the cursor
 set nowrap           "no line wrapping
 set list
 set listchars=tab:\|\ ,trail:-,nbsp:+
-
 
 set exrc
 
@@ -165,14 +141,14 @@ tmap ,, <Esc>
 tnoremap <Esc> <C-\><C-n>
 
 " use t{h,j,k,l} to switch between different windows
-noremap tk <c-w>k
-noremap tj <c-w>j
-noremap th <c-w>h
-noremap tl <c-w>l
-nmap twj :resize +5<cr>
-nmap twk :resize -5<cr>
-nmap twh :vertical resize -5<cr>
-nmap twl :vertical resize +5<cr>
+" noremap tk <c-w>k
+" noremap tj <c-w>j
+" noremap th <c-w>h
+" noremap tl <c-w>l
+" nmap twj :resize +5<cr>
+" nmap twk :resize -5<cr>
+" nmap twh :vertical resize -5<cr>
+" nmap twl :vertical resize +5<cr>
 
 
 
@@ -219,11 +195,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_color_term = 239
 
 
-" config.Numbers
-nnoremap <F3> :NumbersToggle<CR>
-
-
-
 
 " config.Vim-Airline
 "
@@ -252,39 +223,6 @@ if !exists('g:airline_symbols')
 endif
 
 
-
-
-" config.EasyMotion
-" go => go to anywhere
-nmap go <Plug>(easymotion-jumptoanywhere)
-" z + [fFtTwWbBeE(ge)(gE)jknNs] => easy motion
-map zf <Leader><Leader>f
-map zF <Leader><Leader>F
-" map zt <Leader><Leader>t
-map zT <Leader><Leader>T
-map zw <Leader><Leader>w
-map zW <Leader><Leader>W
-" map zb <Leader><Leader>b
-map zB <Leader><Leader>B
-map ze <Leader><Leader>e
-map zE <Leader><Leader>E
-map zge <Leader><Leader>ge
-map zgE <Leader><Leader>gE
-map zj <Leader><Leader>j
-map zk <Leader><Leader>k
-map zn <Leader><Leader>n
-map zN <Leader><Leader>N
-map zs <Leader><Leader>s
-xmap zA zm$<cr>A
-
-hi EasyMotionTarget ctermfg=9 guifg=red
-hi EasyMotionTarget2First ctermfg=9 guifg=red
-hi EasyMotionTarget2Second ctermfg=9 guifg=lightred
-hi link EasyMotionShade Comment
-
-
-
-
 " config.EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(LiveEasyAlign)
@@ -300,75 +238,8 @@ let b:sleuth_automatic = 0
 
 
 
-" config.Neoterm
-" <s-enter> => toggle the terminal
-if exists('nyaovim_version')
-  nnoremap <silent> <s-cr> :Ttoggle<cr>
-else " in terminal use t<enter>
-  nmap t<CR> :Ttoggle<CR>
-endif
-" tt => type the command for the terminal
-nnoremap tt :T<space>
-" te => send current line/selected lines to the terminal
-nnoremap <silent> te :TREPLSend<CR>
-xnoremap <silent> te :TREPLSend<CR>
-" tE => send the thole current file to the terminal
-nnoremap <silent> tE :TREPLSendFile<CR>
-" \t => goto normal mode and press t (e.g. \t<enter> to toggle the terminal)
-imap <leader>t <esc>t
-
-let g:neoterm_size=20
-" toogle the terminal
-" kills the current job (send a <c-c>)
-nnoremap <silent> tc :call neoterm#kill()<cr>
-
-
-
-
-" config.Gundo
-" tg => toogle the gundo
-nnoremap tg :GundoToggle<CR>
-
-
-
-
-" config.NrrwRgn
-" zn => NrrwRgn in normal/visual mode
-nmap zn :NR<CR>
-xmap zn :NR<CR>
-
-
-
-
-" config.NerdTree
-" <F4> => popup the file tree navigation)
-nmap <F4> :NERDTreeToggle<CR>
-
-
-
-
-" config.ESearch
-let g:esearch = {
-      \ 'adapter':    'ack',
-      \ 'backend':    'nvim',
-      \ 'out':        'win',
-      \ 'batch_size': 1000,
-      \ 'use':        ['visual', 'hlsearch', 'last'],
-      \}
-
-
-
-
-" config.Emmet
-let g:user_emmet_leader_key = ',z'
-
-
-
-
-
 " Automatics
 augroup myautocmds
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufRead,BufNewFile,BufEnter \@!(term://)* cd %:p:h
-  au FileType json set nocursorcolumn
 augroup END

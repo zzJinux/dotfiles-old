@@ -19,9 +19,10 @@ curl -o- https://raw.githubusercontent.com/zzJinux/dotfiles/master/.config/macos
 ## Bash Completions
 [**docker, -compose, -machine**](https://gist.github.com/rkuzsma/4f8c1354a9ea67fb3ca915b50e131d1c)
 ```sh
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion docker
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion docker-compose
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion docker-machine
+etc=/Applications/Docker.app/Contents/Resources/etc
+ln -s $etc/docker.bash-completion $(brew --prefix)/etc/bash_completion.d/docker
+ln -s $etc/docker-machine.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-machine
+ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
 ```
 
 ## Apps

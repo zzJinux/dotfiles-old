@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# TODO: terminal color adjustment
+
+function prompt_command {
+  local EXIT="$?"
+
+  GIT_PS1_SHOWDIRTYSTATE=1      # '*' unstaged, '+' staged
+  GIT_PS1_SHOWSTASHSTATE=1      # '$' Something is stashed
+  GIT_PS1_SHOWUNTRACKEDFILES=1  # '%' There are untracked files
+  GIT_PS1_SHOWUPSTREAM=auto     # '<' behind upstream, '>' ahead, '<>' diverged, '=' same
+  GIT_PS1_SHOWCOLORHINTS=1      
+
+  PS1="\[\e[0m\]"
+  if [ "$PROMPT_MODE" == full ]; then
+
+# |      SP [EXIT CODE] SP     |  SP [TIME] SP  |   [JOBS] SP   |         [USER@HOST]        | SP  [WORKDIR]  | [GIT_PS1]
+# |----------------------------|----------------|---------------|----------------------------|----------------|
+# | if non-zero; bWhite, Red   | bYellow, Black | bWhite, Black | if root;     bGreen, Red   |   Blue, Black  |
+# | if zero;   ; bWhite, Green |                                | if non-root; bGreen, Black |                |
+# |          **Bold**          |                                |           **Bold**         |                |
+# 
+# |        [CHAR]       |
+# |---------------------|
+# | if root;   ; bWhite | RESET CURSOR to BLINK
+# | if non-root; bRed   |
+# |       **Bold**      |
+
+    if [ $EXIT != 0 ]; then
+      PS1+="\[\e[1;97;41m\]"
+      PS1+="$(printf ' %3s ' $EXIT)"
+    else
+      PS1+="\[\e[1;97;42m\]     "
+    fi
+
+    PS1+="\[\e[0;93;40m\] \t \[\e[0;97;40m\]j:\j "
+
+    local PSCHAR='\$'
+    if [ $(id -u) -eq 0 ]; then
+      PS1+="\[\e[1;92;41m\]\u@\h"
+      PSCHAR="\e[1;91m$PSCHAR"
+    else
+      PS1+="\[\e[1;92;40m\]\u@\h"
+    fi
+    PS1+="\[\e[0;94;40m\] \w"
+
+    __git_ps1 "${PS1}\[\e[0m\]" "\[\e[0m\]"
+
+    PS1+="\n\[\e[97m\]${PSCHAR}\[\e[0m\e[5 q\] "
+  else
+    if [ $EXIT != 0 ]; then
+      PS1+="\[\e[1;97;41m\]"
+    else
+      PS1+="\[\e[1;97;42m\]"
+    fi
+    PS1+="$(printf '%3s' $EXIT)"
+
+    local PSCHAR='\$'
+    if [ $(id -u) -eq 0 ]; then
+      PSCHAR="\e[1;91m$PSCHAR"
+    fi
+    PS1+="\[\e[0;97m\] $PSCHAR \[\e[0m\e[5 q\]"
+  fi
+}
+
+export PROMPT_MODE=${PROMPT_MODE:-full}
+function prmode {
+  PROMPT_MODE="$1"
+}
+
+PROMPT_COMMAND="prompt_command;${PROMPT_COMMAND}"

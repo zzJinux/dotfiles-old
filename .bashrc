@@ -71,6 +71,7 @@ unset_list+=(HOMEBREW_PREFIX)
 # TODO: alias for custom tab name
 source ~/.bashrc.d/aliases
 source ~/.bashrc.d/prompt
+source ~/.bashrc.d/dotfiles_rc
 for f in ~/.bashrc.d/*.bash; do
   [ -r "$f" ] && source "$f"
 done

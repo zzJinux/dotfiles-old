@@ -28,7 +28,7 @@ ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d
 ## Apps
 ### Terminal
 
-My default theme: `3024 Night.terminal`
+My default theme: `MyCai.terminal`
 
 More themes at https://github.com/lysyi3m/macos-terminal-themes
 

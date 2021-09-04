@@ -22,11 +22,13 @@ sudo -v
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+  && sudo chown -R $(whoami) /usr/local/lib/pkgconfig \
+  && chmod u+w /usr/local/lib/pkgconfig \
   && brew bundle -v
 
 # Change the default shell
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
- && chsh -s /usr/local/bin/bash
+ && sudo chsh -s /usr/local/bin/bash
 
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash

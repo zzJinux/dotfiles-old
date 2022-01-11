@@ -18,6 +18,7 @@ Plug 'mhinz/vim-startify'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'myusuf3/numbers.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 
@@ -64,7 +65,7 @@ set exrc
 
 let g:is_posix = 1 " Treat #!/bin/sh as POSIX-compliant
 augroup indentation
-  au FileType vim,yaml,sh,bash,zsh,markdown set expandtab sw=2
+  au FileType vim,yaml,json,sh,bash,zsh,markdown set expandtab sw=2
   au FileType go,cpp set ts=4 sw=0
 augroup END
 

@@ -10,12 +10,9 @@
                         "key_code": "f16",
                         "modifiers": {
                             "optional": [
-                                "caps_lock"
-
+                                "any"
                             ]
                         }
-
-
                     },
                     "to": [
                         {
@@ -29,7 +26,7 @@
             ]
         },
         {
-            "description": "ESC to English",
+            "description": "(VIM) ESC to Apple_EN",
             "manipulators": [
                 {
                     "type": "basic",
@@ -62,12 +59,78 @@
             ]
         },
         {
-            "description": "Right_command to Gureum_KO <-> Gureum_EN",
+            "description": "(VIM) Ctrl+[ to Apple_EN",
             "manipulators": [
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "right_command",
+                        "key_code": "open_bracket",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_control"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_unless",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "(VIM) Ctrl+O to Apple_EN",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_control"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_unless",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "F16 to Gureum_KO <-> Gureum_EN",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
                         "modifiers": {
                             "optional": [
                                 "any"
@@ -95,7 +158,7 @@
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "right_command",
+                        "key_code": "f16",
                         "modifiers": {
                             "optional": [
                                 "any"
@@ -106,6 +169,67 @@
                         {
                             "select_input_source": {
                                 "input_source_id": "^org\\.youknowone\\.inputmethod\\.Gureum\\.system$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_if",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^org\\.youknowone\\.inputmethod\\.Gureum\\.han2$"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "F16 to Gureum_KO <-> Apple_EN",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                "input_source_id": "^org\\.youknowone\\.inputmethod\\.Gureum\\.han2$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_if",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
                             }
                         }
                     ],

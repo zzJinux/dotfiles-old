@@ -38,7 +38,7 @@ function prompt_command {
     local PSCHAR='\$'
     if [ $(id -u) -eq 0 ]; then
       PS1+="\[\e[1;92;41m\]\u@\h"
-      PSCHAR="\e[1;91m$PSCHAR"
+      PSCHAR="\[\e[1;91m\]$PSCHAR"
     else
       PS1+="\[\e[1;92;40m\]\u@\h"
     fi

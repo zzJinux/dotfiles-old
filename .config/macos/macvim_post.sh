@@ -9,7 +9,7 @@ fi
 # MacVim executables
 cd && mkdir -p .local/bin
 cd "$HOME/.local/bin" && \
-  ln -fs "$APP_PATH/Contents/bin/m"* ./
+  ln -fs "$APP_PATH/Contents/bin/"* ./
 
 # MacVim manpages
 cd && mkdir -p .local/share/man/man1

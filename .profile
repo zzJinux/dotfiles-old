@@ -45,3 +45,5 @@ PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/opt/curl/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+. /usr/local/opt/asdf/libexec/asdf.sh

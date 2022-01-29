@@ -35,19 +35,19 @@ _end
 sudo -v
 
 _begin 'Homebrew setup'
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
-  sudo chown -R $(whoami) /usr/local/lib/pkgconfig \
-  chmod u+w /usr/local/lib/pkgconfig \
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  sudo chown -R $(whoami) /usr/local/lib/pkgconfig
+  chmod u+w /usr/local/lib/pkgconfig
   brew bundle -v
 _end
 
 _begin 'Replace the default shell'
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells' \
+  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
   sudo chsh -s /usr/local/bin/bash
 _end
 
 _begin 'Vimplug setup'
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c ':PlugInstall' -c ':qa!'
 _end
 

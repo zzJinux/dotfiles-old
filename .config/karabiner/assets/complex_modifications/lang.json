@@ -245,6 +245,67 @@
                     ]
                 }
             ]
+        },
+        {
+            "description": "F16 to Apple_KO <-> Apple_EN",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                "input_source_id": "^com\\.apple\\.inputmethod\\.Korean\\.2SetKorean$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_if",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "select_input_source": {
+                                    "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "input_source_if",
+                            "input_sources": [
+                                {
+                                    "input_source_id": "^com\\.apple\\.inputmethod\\.Korean\\.2SetKorean$"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

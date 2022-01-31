@@ -41,3 +41,4 @@ cd && cd .config/macos
 # References
 - https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 - https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository-ko.html
+- https://github.com/cykerway/complete-alias

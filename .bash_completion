@@ -1,0 +1,7 @@
+. ~/.bashrc.d/complete_alias
+alias kl='kubectl'
+complete -F _complete_alias kl
+alias kx='kubectx'
+complete -F _complete_alias kx
+alias dk='docker'
+complete -F _complete_alias docker

@@ -11,7 +11,7 @@ function prompt_command {
   GIT_PS1_SHOWUPSTREAM=auto     # '<' behind upstream, '>' ahead, '<>' diverged, '=' same
   GIT_PS1_SHOWCOLORHINTS=1      
 
-  PS1="\[\e[0m\]"
+  PS1="\[\e[5 q\e[0m\]"
   if [ "$PROMPT_MODE" == full ]; then
 
 # |      SP [EXIT CODE] SP     |  SP [TIME] SP  |   [JOBS] SP   |         [USER@HOST]        | SP  [WORKDIR]  | [GIT_PS1]
@@ -22,7 +22,7 @@ function prompt_command {
 # 
 # |        [CHAR]       |
 # |---------------------|
-# | if root;   ; bWhite | RESET CURSOR to BLINK
+# | if root;   ; bWhite | Reset cursor to blinking bar
 # | if non-root; bRed   |
 # |       **Bold**      |
 
@@ -46,7 +46,7 @@ function prompt_command {
 
     __git_ps1 "${PS1}\[\e[0m\]" "\[\e[0m\]"
 
-    PS1+="\n\[\e[97m\]${PSCHAR}\[\e[0m\e[5 q\] "
+    PS1+="\n\[\e[97m\]${PSCHAR}\[\e[0m\] "
   else
     if [ $EXIT != 0 ]; then
       PS1+="\[\e[1;97;41m\]"
@@ -59,7 +59,7 @@ function prompt_command {
     if [ $(id -u) -eq 0 ]; then
       PSCHAR="\e[1;91m$PSCHAR"
     fi
-    PS1+="\[\e[0;97m\] $PSCHAR \[\e[0m\e[5 q\]"
+    PS1+="\[\e[0;97m\] ${PSCHAR}\[\e[0m\] "
   fi
 }
 

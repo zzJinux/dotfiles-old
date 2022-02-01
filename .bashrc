@@ -11,6 +11,9 @@ case $- in
       *) return;;
 esac
 
+# https://stackoverflow.com/a/25391867
+stty -ixon
+
 unset_list=()
 
 #   Bash specific options

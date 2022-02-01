@@ -41,11 +41,6 @@ _begin 'Homebrew setup'
   brew bundle -v
 _end
 
-_begin 'Replace the default shell'
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-  sudo chsh -s /usr/local/bin/bash
-_end
-
 _begin 'Vimplug setup'
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   nvim -c ':PlugInstall' -c ':qa!'
@@ -67,7 +62,12 @@ if ! command -v "$(brew --prefix)/bin/troff"; then
 else
   echo 'TODO: edit /private/etc/man.conf'
 fi
-
 _end
+
+_begin 'Replace the default shell'
+  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+  sudo chsh -s /usr/local/bin/bash
+_end
+
 echo 'exec the new shell :)'
 exec /usr/bin/env bash

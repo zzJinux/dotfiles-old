@@ -4,4 +4,4 @@ complete -F _complete_alias kl
 alias kx='kubectx'
 complete -F _complete_alias kx
 alias dk='docker'
-complete -F _complete_alias docker
+complete -F _complete_alias dk

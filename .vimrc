@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'myusuf3/numbers.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/Colorizer'
 
 " colorschemes
 Plug 'morhetz/gruvbox'

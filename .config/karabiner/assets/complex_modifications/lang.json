@@ -247,6 +247,23 @@
             ]
         },
         {
+            "description": "f16 -> l_opt+spacebar",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "f16"
+                    },
+                    "to": [
+                        {
+                            "key_code": "spacebar",
+                            "modifiers": ["left_option"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "description": "F16 to Apple_KO <-> Apple_EN",
             "manipulators": [
                 {
@@ -304,6 +321,30 @@
                             ]
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "description": "Fast input source switch (F16)",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "right_command",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "f16"
+                        },
+                        {
+                            "key_code": "vk_none"
+                        }
+                    ],
+                    "type": "basic"
                 }
             ]
         }

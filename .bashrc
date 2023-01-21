@@ -54,9 +54,8 @@ unset_list+=(color_prompt force_color_prompt)
 source ~/.bashrc.d/colors
 
 
-
-#   Homebrew bash completion
-#   ------------------------------------------------------------
+# BASH_COMPLETION_COMPAT_DIR='/dev/null'
+# https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
   HOMEBREW_PREFIX="$(brew --prefix)"
   if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
@@ -69,7 +68,9 @@ if type brew &>/dev/null; then
 fi
 unset_list+=(HOMEBREW_PREFIX)
 
-
+# homebrew kube-ps1
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
+KUBE_PS1_SYMBOL_ENABLE=false
 
 # TODO: alias for custom tab name
 source ~/.bashrc.d/aliases
@@ -102,12 +103,6 @@ fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# kubectl completion
-if command -v kubectl &>/dev/null; then
-  source <(kubectl completion bash)
-fi
-
 
 #   Cleanup
 #   ------------------------------------------------------------

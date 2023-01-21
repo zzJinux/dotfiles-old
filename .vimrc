@@ -28,7 +28,7 @@ Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
 
 " editing
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 
@@ -245,3 +245,19 @@ augroup myautocmds
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au BufRead,BufNewFile,BufEnter \@!(term://)* cd %:p:h
 augroup END
+
+
+if (exists("g:neovide"))
+  source ~/.gvimrc
+
+  " https://github.com/neovide/neovide/issues/113
+  " https://github.com/neovide/neovide/issues/1263
+  " system clipboard
+  let g:neovide_input_use_logo = 1
+  vmap     <D-c> "+y
+  map      <D-v> "+p
+  noremap! <D-v> <C-R>+
+
+  " insert original character without triggering things like auto-pairs
+  imap <C-r> <D-v>
+endif

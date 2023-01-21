@@ -83,6 +83,9 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-corner -int 3
 defaults write com.apple.dock wvous-br-modifier -int 0
 
+# Show macOS app switcher across all monitors
+defaults write com.apple.dock appswitcher-all-displays -bool true
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################

@@ -26,24 +26,16 @@ fi
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Host-specific
 if [ -f "$HOME/.profile_host" ]; then
   . "$HOME/.profile_host"
 fi
 
-# rvm
-PATH="$PATH:$HOME/.rvm/bin"
-
-# fnm
-PATH="$HOME/.fnm:$PATH"
-eval "`fnm env`"
+# python (Xcode Command Line Tools)
+# PATH="$(python3 -c 'import os,sysconfig;print(sysconfig.get_path("scripts",f"{os.name}_user"))'):$PATH"
 
 # go
 PATH="$HOME/go/bin:$PATH"
-
-# curl
-PATH="/usr/local/opt/curl/bin:$PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-. /usr/local/opt/asdf/libexec/asdf.sh

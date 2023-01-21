@@ -1,0 +1,6 @@
+Complex Modifications:
+  (VIM) ESC to Apple_EN
+  (VIM) Ctrl+[ to Apple_EN
+  (VIM) Ctrl+O to Apple_EN
+  Disable caps_lock delay (rev 1)
+  Fast input source switch (F16)

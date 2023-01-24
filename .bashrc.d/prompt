@@ -11,14 +11,21 @@ function prompt_command {
   GIT_PS1_SHOWUPSTREAM=auto     # '<' behind upstream, '>' ahead, '<>' diverged, '=' same
   GIT_PS1_SHOWCOLORHINTS=1      
 
-  PS1="\[\e[5 q\e[0m\]"
+  local datetime='\[\e[0;97;40m\]\D{%F}\[\e[0;39;40m\]T\[\e[0;93;40m\]\t\[\e[0m\]\D{%z}'
+
+  PS1='\[\e[5 q\e[0m\]'
+  # HACK: https://stackoverflow.com/a/66772796/3912693
+  #   TODO: fc -ln -1 hack
+  PS0='${showtime:+'"\[\e[0;97;40m\]▶ $datetime\n"'\[${PS1:$((ps0time=\D{%s}, 0)):0}\]''}'
+  [ "0${ps0time}" -gt 0 ] && PS1="\[\e[0;97;40m\]▶ $datetime \[\e[0;93;40m\]"'($((\D{%s}-ps0time))s)\[${PS1:$((ps0time=0)):0}\]\n'$PS1
+
   if [ "$PROMPT_MODE" == full ]; then
 
-# |      SP [EXIT CODE] SP     |  SP [TIME] SP  |   [JOBS] SP   |         [USER@HOST]        | SP  [WORKDIR]  | [GIT_PS1]
-# |----------------------------|----------------|---------------|----------------------------|----------------|
-# | if non-zero; bWhite, Red   | bYellow, Black | bWhite, Black | if root;     bGreen, Red   |   Blue, Black  |
-# | if zero;   ; bWhite, Green |                                | if non-root; bGreen, Black |                |
-# |          **Bold**          |                                |           **Bold**         |                |
+# |      SP [EXIT CODE] SP     |   [JOBS] SP   |         [USER@HOST]        | SP  [WORKDIR]  | [GIT_PS1]
+# |----------------------------|---------------|----------------------------|----------------|
+# | if non-zero; bWhite, Red   | bWhite, Black | if root;     bGreen, Red   |   Blue, Black  |
+# | if zero;   ; bWhite, Green |               | if non-root; bGreen, Black |                |
+# |          **Bold**          |               |           **Bold**         |                |
 # 
 # |        [CHAR]       |
 # |---------------------|
@@ -33,7 +40,8 @@ function prompt_command {
       PS1+="\[\e[1;97;42m\]     "
     fi
 
-    PS1+="\[\e[0;93;40m\] \t \[\e[0;97;40m\]j:\j "
+    PS1+="\[\e[0;97;40m\] j:\j "
+    # PS1+="\[\e[0;93;40m\] \t \[\e[0;97;40m\]j:\j "
 
     local PSCHAR='\$'
     if [ $(id -u) -eq 0 ]; then
@@ -64,7 +72,7 @@ function prompt_command {
   fi
 }
 
-export PROMPT_MODE=${PROMPT_MODE:-full}
+PROMPT_MODE=${PROMPT_MODE:-full}
 function prmode {
   PROMPT_MODE="$1"
 }

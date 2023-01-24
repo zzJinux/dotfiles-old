@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # reference: http://natelandau.com/my-mac-osx-bash_profile/
+# https://gist.github.com/natelandau/10654137
 
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ" && date -u +%s'
 

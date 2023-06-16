@@ -31,6 +31,7 @@ Plug 'rakr/vim-one'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
+Plug '907th/vim-auto-save'
 
 " formatting
 Plug 'junegunn/vim-easy-align'
@@ -136,11 +137,11 @@ nmap <leader>o :!open "%"<cr>
 imap <leader>o <esc><leader>o
 
 " ,, => escape to normal mode
-imap ,, <Esc>
-tmap ,, <Esc>
+" imap ,, <Esc>
+" tmap ,, <Esc>
 
 " <esc> => go back to normal mode (in terminal mode)
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 " use t{h,j,k,l} to switch between different windows
 " noremap tk <c-w>k

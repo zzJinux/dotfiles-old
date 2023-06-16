@@ -51,7 +51,7 @@ function prompt_command {
       PS1+="\[\e[1;92;40m\]\u@\h"
     fi
     PS1+="\[\e[0;0;40m\] "'$(kube_ps1)'
-    PS1+="\[\e[0;94;40m\] \w"
+    PS1+="\[\e[0;94;40m\] \w\[\e[0m\]"
 
     __git_ps1 "${PS1}\[\e[0m\]" "\[\e[0m\]"
 

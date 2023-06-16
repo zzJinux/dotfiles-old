@@ -1,5 +1,5 @@
 {
-  "title": "Languages",
+  "title": "IM control",
   "rules": [
     {
       "description": "right_command to left_option+space (buggy)",
@@ -46,7 +46,12 @@
               "select_input_source": {
                 "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
               }
+            },
+            {
+              "key_code": "escape"
             }
+          ],
+          "to_after_key_up":[
           ],
           "conditions": [
             {
@@ -79,7 +84,11 @@
                 "select_input_source": {
                   "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
                 }
-              }
+              },
+            {
+              "key_code": "open_bracket",
+              "modifiers": ["left_control"]
+            }
             ],
             "conditions": [
               {
@@ -112,6 +121,10 @@
               "select_input_source": {
                 "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
               }
+            },
+            {
+              "key_code": "o",
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [

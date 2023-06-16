@@ -3,6 +3,9 @@
 # https://gist.github.com/natelandau/10654137
 
 alias utc='date -u +"%Y-%m-%dT%H:%M:%SZ" && date -u +%s'
+epoch() {
+  gdate -d @"$1" --iso-8601=seconds
+}
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER

@@ -79,6 +79,7 @@ source ~/.bashrc.d/dotfiles_rc
 for f in ~/.bashrc.d/*.bash; do
   [ -r "$f" ] && source "$f"
 done
+unset f
 
 #   Application specifics
 #   ------------------------------------------------------------
@@ -108,3 +109,5 @@ fi
 #   ------------------------------------------------------------
 unset ${unset_list[*]}
 unset unset_list
+
+. "$HOME/.cargo/env"

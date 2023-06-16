@@ -39,3 +39,6 @@ fi
 
 # go
 PATH="$HOME/go/bin:$PATH"
+
+# rust
+. "$HOME/.cargo/env"

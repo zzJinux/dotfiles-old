@@ -97,10 +97,14 @@ function setupURLRouter(config)
   hs.urlevent.httpCallback = function(scheme, host, params, fullURL)
     local procName
 
-    for _, rule in ipairs(rules) do
-      if rule:match(host) then
-        procName = rule.processor
-        break
+    if host == nil then
+      -- DO NOTHING
+    else
+      for _, rule in ipairs(rules) do
+	if rule:match(host) then
+	  procName = rule.processor
+	  break
+	end
       end
     end
 

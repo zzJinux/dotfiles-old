@@ -49,7 +49,9 @@ function setupURLRouter(config)
     local arguments = { table.unpack(browser["cmd"], 2) }
 
     processors[name] = function(fullURL)
-      local task = hs.task.new(command, nil, function() return false end, { table.unpack(arguments), fullURL })
+      local arguments = { table.unpack(arguments) }
+      table.insert(arguments, fullURL)
+      local task = hs.task.new(command, nil, function() return false end, arguments)
       task:start()
     end
 
